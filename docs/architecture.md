@@ -42,7 +42,10 @@ The API is packaged as a Docker container and runs using Uvicorn.
 *Figure: Docker image built and application container running locally*
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ---
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -55,10 +58,16 @@ The API and database run as separate workloads inside Kubernetes.
 *Figure: Kubernetes Deployments and Services created for API and database*
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ![Pods running in namespace](images/namespace_pods.png)
 
 *Figure: Application and database pods running inside the dedicated namespace*
 
+=======
+![Kubernetes resources running](images/final_all_pods_ns_cloud-rel.png)
+
+*Figure: kubectl get all showing Deployments, Services, ReplicaSets, and Pods in the application namespace*
+>>>>>>> Stashed changes
 =======
 ![Kubernetes resources running](images/final_all_pods_ns_cloud-rel.png)
 
