@@ -1,0 +1,35 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: api-alerts
+  namespace: observability
+spec:
+  groups:
+    - name: cloudrel.api.rules
+      rules:
+        - alert: ApiDown
+          expr: up{namespace="cloud-rel", service="api"} == 0
+          for: 30s
+          labels:
+            severity: critical
+          annotations:
+            summary: "API target is down"
+            description: "Prometheus cannot scrape the API metrics target."
+
+        - alert: Api5xxErrors
+          expr: sum(rate(http_requests_total{namespace="cloud-rel", status=~"5.."}[1m])) > 0
+          for: 30s
+          labels:
+            severity: warning
+          annotations:
+            summary: "API is returning 5xx"
+            description: "5xx errors detected in the last minute."
+
+        - alert: ApiReadyzFailing
+          expr: sum(rate(http_requests_total{namespace="cloud-rel", path="/readyz", status="503"}[1m])) > 0
+          for: 30s
+          labels:
+            severity: warning
+          annotations:
+            summary: "Readiness failing (DB not ready)"
+            description: "/readyz is returning 503."
