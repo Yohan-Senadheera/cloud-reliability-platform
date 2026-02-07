@@ -10,3 +10,19 @@
 
 ### Alternatives Considered
 - Manual folder creation (rejected – slower and error-prone)
+
+
+## Decision: Deploy Application and Database as Separate Kubernetes Workloads
+
+### Reason
+- Separating application and database follows microservice principles
+- Allows independent scaling, restarts, and failure isolation
+- Matches real-world Kubernetes deployment patterns
+
+### Outcome
+- API and PostgreSQL run in separate Pods and Deployments
+- Kubernetes manages lifecycle and restarts independently
+- Readiness checks correctly reflect database availability
+
+### Notes
+This setup enables realistic failure testing and recovery scenarios.
