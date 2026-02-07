@@ -20,7 +20,17 @@ The system exposes health, readiness, and metrics endpoints and is
 fully observable using Prometheus, Grafana, and Alertmanager.
 
 ---
+## Architecture Overview
 
+A high-level view of the Cloud Reliability Platform, showing request flow, core components, and the observability stack.
+
+![Architecture Diagram](docs/images/architecture.png)
+
+*Figure: Kubernetes-based architecture with API and PostgreSQL services, monitored using Prometheus and Grafana.*
+
+For a detailed breakdown of each component, see [docs/architecture.md](docs/architecture.md).
+
+---
 ## What This Project Demonstrates
 
 - Containerized FastAPI service

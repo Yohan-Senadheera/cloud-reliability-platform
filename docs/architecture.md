@@ -5,6 +5,14 @@ and focuses on reliability and observability rather than feature depth.
 
 ---
 
+## System Architecture
+
+A high-level view of the Cloud Reliability Platform running on Kubernetes, showing the API + database path and the observability stack used for monitoring.
+
+![System architecture diagram](images/architecture.png)
+
+*Figure: Kubernetes-based architecture with API + PostgreSQL and observability using Prometheus & Grafana*
+
 ## Components
 
 - **API Service**
