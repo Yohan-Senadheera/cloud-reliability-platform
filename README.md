@@ -65,3 +65,10 @@ This project was built incrementally:
 4. Documentation written alongside development
 
 The goal was to **operate a service**, not just deploy one.
+
+## How to Navigate This Repository
+
+- `docs/architecture.md` – system design and runtime behavior
+- `docs/observability.md` – metrics, dashboards, and alerting deep dive
+- `docs/runbooks/` – real incident simulations and recovery steps
+

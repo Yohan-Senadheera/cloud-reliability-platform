@@ -18,11 +18,14 @@ Kubernetes recreated the pod automatically.
 - New pod Running
 - API endpoints accessible
 
-### Evidence of Recovery
+## Evidence of Kubernetes Self-Healing
 
-After pod deletion, Kubernetes automatically created a new pod.
+After deleting the API pod, Kubernetes automatically recreated it.
 
-![Pod self-healing](docs/images/app/pod_down_auto_up.png)
+![Pod self-healing](images/pod_down_auto_up.png)
+
+*Figure: API pod terminated and automatically recreated by Kubernetes*
+
 
 ## Lesson
 Pods are disposable. Services provide stability.

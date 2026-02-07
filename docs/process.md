@@ -67,7 +67,14 @@ PostgreSQL was deployed as a separate workload, independent from the application
 
 The FastAPI application was deployed using Kubernetes Deployments and Services, ensuring stable service discovery and pod management.
 
-![Kubernetes cluster created](docs/images/app/cluster_created.png)
+## Kubernetes Cluster Setup
+
+A local Kubernetes cluster was created using kind to simulate cloud behavior.
+
+![Kubernetes cluster created](images/cluster_created.png)
+
+*Figure: Local Kubernetes cluster initialized using kind*
+
 ---
 
 ## 6. Service Exposure and Validation

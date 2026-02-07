@@ -18,11 +18,18 @@ Database replicas restored.
 - /readyz returned 200
 - API requests succeeded
 
-### Evidence of Dependency Failure
-Database was intentionally scaled down and later restored.
+## Evidence of Database Dependency Failure
 
-![Database scaled down](docs/images/app/db_replicas_0.png)
-![Database restored](docs/images/app/db_replicas_1.png)
+The database was intentionally scaled down and later restored.
+
+![Database scaled down](images/db_replicas_0.png)
+
+*Figure: PostgreSQL scaled to zero replicas*
+
+![Database restored](images/db_replicas_1.png)
+
+*Figure: PostgreSQL restored and available again*
+
 
 ## Lesson
 Readiness must reflect dependency health.

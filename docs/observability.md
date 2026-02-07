@@ -84,12 +84,29 @@ Aligned custom PrometheusRule labels with stack labels:
 - Alertmanager received alerts
 
 ---
-### Service Health & Metrics Verification
+## Prometheus Metrics Validation
 
-Health, readiness, and metrics endpoints were validated from inside the cluster.
+Application metrics were queried directly from Prometheus.
 
-![API health and metrics](docs/images/app/api_testing.png)
-![API after Kubernetes deployment](docs/images/app/api_testing_after_kind.png)
+![Prometheus HTTP request metrics](images/prometheus_query_http_requests.png)
+
+*Figure: http_requests_total showing both successful and failed requests*
+
+## Custom Grafana Dashboard – Service Overview
+
+A custom Grafana dashboard was built using SRE Golden Signals.
+
+![Service overview dashboard](images/custom_dashboard_made.png)
+
+*Figure: Grafana dashboard showing request rate, error rate, and p95 latency*
+
+## Alert Validation
+
+Custom alerts were validated during failure scenarios.
+
+![High error rate alert firing](images/ApiHighErrorRate_Alert_firing.png)
+
+*Figure: ApiHighErrorRate alert firing during simulated failure*
 
 ## SRE Takeaway
 
