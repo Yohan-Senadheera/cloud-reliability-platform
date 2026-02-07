@@ -50,7 +50,7 @@ The project includes a **custom Grafana dashboard** focused on
 **service-level Golden Signals (Traffic, Errors, Latency)** and was
 used during real incident simulations.
 
-👉 See: [Observability & Monitoring – Deep Dive](docs/observability.md)
+👉 See: [Observability & Monitoring – Deep Dive](docs/images/observability.md)
 
 ---
 
