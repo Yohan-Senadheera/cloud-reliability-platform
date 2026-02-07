@@ -4,7 +4,8 @@ A production-style reliability engineering project that demonstrates
 how a containerized API behaves under failures and how observability
 is used to detect, understand, and validate recovery.
 
-This project focuses on **SRE fundamentals**, not tutorials.
+Note: This project focuses on cloud-native reliability concepts.
+It is deployed locally using Kubernetes to simulate cloud behavior.
 
 ---
 
