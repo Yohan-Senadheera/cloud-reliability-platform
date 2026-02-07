@@ -24,7 +24,7 @@ fully observable using Prometheus, Grafana, and Alertmanager.
 
 A high-level view of the Cloud Reliability Platform, showing request flow, core components, and the observability stack.
 
-![Architecture Diagram](docs/images/architecture.png)
+![Architecture Diagram](docs/images/Architecture.png)
 
 *Figure: Kubernetes-based architecture with API and PostgreSQL services, monitored using Prometheus and Grafana.*
 
@@ -50,7 +50,7 @@ The project includes a **custom Grafana dashboard** focused on
 **service-level Golden Signals (Traffic, Errors, Latency)** and was
 used during real incident simulations.
 
-👉 See: [Observability & Monitoring – Deep Dive](docs/images/observability.md)
+👉 See: [Observability & Monitoring – Deep Dive](docs/observability.md)
 
 ---
 
