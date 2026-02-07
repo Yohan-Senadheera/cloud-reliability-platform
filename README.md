@@ -52,7 +52,7 @@ Real failure scenarios were simulated and documented:
 - Database unavailability and readiness gating
 - Kubernetes readiness failure handling
 
-👉 See: [Runbooks](docs/runbooks/)
+👉 See: [Runbooks](/runbooks/)
 
 ---
 
