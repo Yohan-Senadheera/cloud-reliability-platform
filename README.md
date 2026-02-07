@@ -4,8 +4,8 @@ A production-style reliability engineering project that demonstrates
 how a containerized API behaves under failures and how observability
 is used to detect, understand, and validate recovery.
 
-Note: This project focuses on cloud-native reliability concepts.
-It is deployed locally using Kubernetes to simulate cloud behavior.
+This project was built to simulate cloud-native reliability behavior locally
+using Kubernetes, without relying on a specific cloud provider.
 
 ---
 
