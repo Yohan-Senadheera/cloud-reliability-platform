@@ -1,23 +1,19 @@
-## Incident: Service Not Ready in Kubernetes
+# Incident: Kubernetes Readiness Failure
 
-### Symptoms
-- Readiness probe returns HTTP 503
-- Kubernetes Service does not route traffic to the Pod
+## Symptoms
+- Pod Running but Not Ready
+- Traffic blocked by Service
 
-### Detection
-- curl to /readyz returns status "not ready"
-- Pod remains Running but not Ready
+## Detection
+- Readiness probe failing
+- Metrics showed 503 responses
 
-### Root Cause
-- Database dependency not available or not reachable
+## Resolution
+- Restored database
+- Pod transitioned to Ready
 
-### Impact
-- Traffic blocked by Kubernetes until dependencies are healthy
+## Verification
+- Service routed traffic again
 
-### Resolution
-- Restore database service
-- Verify readiness probe transitions to Ready
-
-### Verification
-- kubectl get pods shows Ready state
-- API requests succeed
+## Lesson
+Readiness is a traffic gate, not a health check.

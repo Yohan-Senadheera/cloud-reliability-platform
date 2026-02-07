@@ -1,33 +1,59 @@
-## Architecture Status
+# Architecture Overview
 
-The project is currently in the initialization phase.
+This project runs a small production-like service inside Kubernetes
+and focuses on reliability and observability rather than feature depth.
 
-At this stage:
-- Repository structure is in place
-- No application or infrastructure components have been deployed yet
+---
 
-Next steps will introduce:
-- API service
-- Kubernetes deployment
-- API gateway
-- Observability stack
+## Components
 
-## High-Level Architecture (Kubernetes)
+- **API Service**
+  - FastAPI application
+  - Runs on Uvicorn (ASGI server)
+  - Exposes health, readiness, and metrics endpoints
 
-The application is deployed inside a Kubernetes cluster using standard primitives.
+- **Database**
+  - PostgreSQL
+  - Deployed as a separate Kubernetes workload
 
-Components:
-- FastAPI application deployed as a Kubernetes Deployment
-- PostgreSQL deployed as a separate Deployment
-- Services expose both components internally
-- kubectl port-forward used for local access during development
+- **Kubernetes**
+  - Deployments manage desired state
+  - Services provide stable networking
+  - Pods are disposable and self-healed
 
-Runtime flow:
-Client
- → kubectl port-forward
- → Kubernetes Service (API)
- → API Pod
- → PostgreSQL Service
- → PostgreSQL Pod
+---
 
-Health, readiness, and metrics endpoints are exposed from the API pod.
+## Runtime Flow
+
+Client  
+→ kubectl port-forward / Service  
+→ API Pod  
+→ PostgreSQL Service  
+→ PostgreSQL Pod  
+
+---
+
+### Containerized Application Runtime
+
+The API is packaged as a Docker container and runs using Uvicorn.
+
+![Docker build and container run](docs/images/app/docker_built_and_run.png)
+
+### Kubernetes Deployment State
+
+The API and database run as separate workloads inside Kubernetes.
+
+![Kubernetes resources deployed](docs/images/app/kube_cluster_deploy.png)
+![Pods running in namespace](docs/images/app/namespace_pods.png)
+
+
+## Health & Readiness
+
+- `/healthz`
+  - Indicates application liveness
+- `/readyz`
+  - Indicates dependency readiness (database)
+- `/metrics`
+  - Prometheus-compatible metrics
+
+This separation ensures traffic is gated safely during failures.

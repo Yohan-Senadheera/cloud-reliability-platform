@@ -1,28 +1,55 @@
-## Decision: Use GitHub Copilot for Initial Project Structure
+# Architectural & Engineering Decisions
 
-### Reason
-- Accelerates bootstrapping without spending time on manual scaffolding
-- Allows early focus on architecture and reliability rather than folder setup
+This document records **why** decisions were made, not just what was built.
 
-### Outcome
-- A clean initial layout that can evolve as the project grows
-- Structure separates concerns early (code, docs, infrastructure, runbooks)
+---
 
-### Alternatives Considered
-- Manual folder creation (rejected – slower and error-prone)
+## Decision: Use Kubernetes Instead of Local Containers
 
+**Reason**
+- Kubernetes enables failure simulation and self-healing
+- Matches real production environments
+- Supports readiness-based traffic control
 
-## Decision: Deploy Application and Database as Separate Kubernetes Workloads
+**Outcome**
+- Pods are disposable
+- Services remain stable
+- Recovery is automatic
 
-### Reason
-- Separating application and database follows microservice principles
-- Allows independent scaling, restarts, and failure isolation
-- Matches real-world Kubernetes deployment patterns
+---
 
-### Outcome
-- API and PostgreSQL run in separate Pods and Deployments
-- Kubernetes manages lifecycle and restarts independently
-- Readiness checks correctly reflect database availability
+## Decision: Separate API and Database Workloads
 
-### Notes
-This setup enables realistic failure testing and recovery scenarios.
+**Reason**
+- Failure isolation
+- Independent lifecycle management
+- Realistic microservice architecture
+
+**Outcome**
+- Readiness reflects database availability
+- Failures are observable and controlled
+
+---
+
+## Decision: Separate Health and Readiness Endpoints
+
+**Reason**
+- Liveness ≠ readiness
+- Prevents traffic during partial failures
+
+**Outcome**
+- App stays alive during DB failures
+- Traffic blocked until dependencies recover
+
+---
+
+## Decision: Use Prometheus Operator
+
+**Reason**
+- Declarative monitoring
+- Kubernetes-native observability
+- Industry-standard tooling
+
+**Outcome**
+- Metrics scraped via ServiceMonitor
+- Alerts defined via PrometheusRule

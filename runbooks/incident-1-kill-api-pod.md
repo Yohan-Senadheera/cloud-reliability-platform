@@ -1,18 +1,28 @@
-# Incident 1 – API Pod Crash
+# Incident: API Pod Crash
 
 ## Scenario
-API pod was deleted manually to simulate a crash.
+API pod was manually deleted.
 
 ## Detection
-- Pod disappeared from `kubectl get pods`
-- Service endpoint temporarily unavailable
+- Pod terminated
+- New pod created automatically
+- Service remained available
 
-## Response
-- Kubernetes automatically created a new pod
+## Root Cause
+Intentional pod deletion.
+
+## Resolution
+Kubernetes recreated the pod automatically.
 
 ## Verification
-- New pod reached `Running`
-- `/healthz` returned 200 OK
+- New pod Running
+- API endpoints accessible
 
-## Learning
-Kubernetes self-healing ensures service recovery without manual intervention.
+### Evidence of Recovery
+
+After pod deletion, Kubernetes automatically created a new pod.
+
+![Pod self-healing](docs/images/app/pod_down_auto_up.png)
+
+## Lesson
+Pods are disposable. Services provide stability.
