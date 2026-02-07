@@ -37,14 +37,14 @@ Client
 
 The API is packaged as a Docker container and runs using Uvicorn.
 
-![Docker build and container run](images/app/docker_built_and_run.png)
+![Docker build and container run](images/docker_built_and_run.png)
 
 ### Kubernetes Deployment State
 
 The API and database run as separate workloads inside Kubernetes.
 
-![Kubernetes resources deployed](images/app/kube_cluster_deploy.png)
-![Pods running in namespace](images/app/namespace_pods.png)
+![Kubernetes resources deployed](images/kube_cluster_deploy.png)
+![Pods running in namespace](images/namespace_pods.png)
 
 
 ## Health & Readiness
