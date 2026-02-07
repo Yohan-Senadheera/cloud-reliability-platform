@@ -33,18 +33,28 @@ Client
 
 ---
 
-### Containerized Application Runtime
+## Containerized Application Runtime
 
 The API is packaged as a Docker container and runs using Uvicorn.
 
 ![Docker build and container run](images/docker_built_and_run.png)
 
-### Kubernetes Deployment State
+*Figure: Docker image built and application container running locally*
+
+---
+
+## Kubernetes Deployment State
 
 The API and database run as separate workloads inside Kubernetes.
 
 ![Kubernetes resources deployed](images/kube_cluster_deploy.png)
+
+*Figure: Kubernetes Deployments and Services created for API and database*
+
 ![Pods running in namespace](images/namespace_pods.png)
+
+*Figure: Application and database pods running inside the dedicated namespace*
+
 
 
 ## Health & Readiness
