@@ -1,1 +1,47 @@
-# Placeholder for postgres configuration
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgres-secret
+  namespace: cloud-rel
+type: Opaque
+stringData:
+  POSTGRES_DB: appdb
+  POSTGRES_USER: appuser
+  POSTGRES_PASSWORD: apppass
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  namespace: cloud-rel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:16
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - secretRef:
+                name: postgres-secret
+          # NOTE: No persistent volume for the 2-day sprint (keep it simple)
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+  namespace: cloud-rel
+spec:
+  selector:
+    app: postgres
+  ports:
+    - port: 5432
+      targetPort: 5432

@@ -1,1 +1,4 @@
-# Placeholder for namespace configuration
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cloud-rel
